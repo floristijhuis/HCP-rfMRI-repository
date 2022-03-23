@@ -1,10 +1,10 @@
-<h5>About the atlas:</h5>
+<h3>About the atlas:</h3>
 
 This folder contains the relevant files for the Glasser HCP_MMP1.0 atlas, applied to the Human Connectome Project (Glasser et al., 2017, doi: 10.1038/nature18933). The original atlas files were downloaded from https://balsa.wustl.edu/file/87B9N (Cortical MMP1.0 atlas + Freesurfer Subcortical regions). 
 
 ------------------------------------------------------------------------------------------
 
-<h5>About the annotation:</h5>
+<h3>About the annotation:</h3>
 
 <ol>
   <li>Some generally helpful files that include the names of the regions can be found on https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html. More anatomical information about the regions can be found on https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4990127/bin/NIHMS68870-supplement-Neuroanatomical_Supplementary_Results.pdf.</li>
