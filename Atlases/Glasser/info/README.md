@@ -13,7 +13,7 @@ This folder contains the relevant files for the Glasser HCP_MMP1.0 atlas, applie
 
 First, the Glasser cortical atlas in NIFTI format was downloaded from https://neurovault.org/collections/1549/. The Freesurfer subcortical atlas was obtained after separating it from the complete atlas in CIFTI format:
 
-wb_command -cifti-separate Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii COLUMN -volume-all FreesurferSubcortex.nii
+<code>wb_command -cifti-separate Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii COLUMN -volume-all FreesurferSubcortex.nii</code>
 
 Then, the coordinates were obtained and put in the annotation file using RELATIVELINK/DATE_COGparcels.sh</li>
 
