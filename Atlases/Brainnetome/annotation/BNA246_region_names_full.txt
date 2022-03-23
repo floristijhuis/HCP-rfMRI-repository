@@ -1,0 +1,246 @@
+medial area 8 L
+medial area 8 R
+dorsolateral area 8 L
+dorsolateral area 8 R
+lateral area 9 L
+lateral area 9 R
+dorsolateral area 6 L
+dorsolateral area 6 R
+medial area 6 L
+medial area 6 R
+medial area 9 L
+medial area 9 R
+medial area 10 L
+medial area 10 R
+dorsal area 9/46 L
+dorsal area 9/46 R
+inferior frontal junction L
+inferior frontal junction R
+area 46 L
+area 46 R
+ventral area 9/46 L
+ventral area 9/46 R
+ventrolateral area 8 L
+ventrolateral area 8 R
+ventrolateral area 6 L
+ventrolateral area 6 R
+lateral area10 L
+lateral area 10 R
+dorsal area 44 L
+dorsal area 44 R
+inferior frontal sulcus L
+inferior frontal sulcus R
+caudal area 45 L
+caudal area 45 R
+rostral area 45 L
+rostral area 45 R
+opercular area 44 L
+opercular area 44 R
+ventral area 44 L
+ventral area 44 R
+medial area 14 L
+medial area 14 R
+orbital area 12/47 L
+orbital area 12/47 R
+lateral area 11 L
+lateral area 11 R
+medial area 11 L
+medial area 11 R
+area 13 L
+area 13 R
+lateral area 12/47 L
+lateral area 12/47 R
+area 4 (head and face region) L
+area 4 (head and face region) R
+caudal dorsolateral area 6 L
+caudal dorsolateral area 6 R
+area 4 (upper limb region) L
+area 4 (upper limb region) R
+area 4 (trunk region) L
+area 4 (trunk region) R
+area 4 (tongue and larynx region) L
+area 4 (tongue and larynx region) R
+caudal ventrolateral area 6 L
+caudal ventrolateral area 6 R
+area1/2/3 (lower limb region) L
+area1/2/3 (lower limb region) R
+area 4 (lower limb region) L
+area 4 (lower limb region) R
+medial area 38 L
+medial area 38 R
+area 41/42 L
+area 41/42 R
+NA L
+NA R
+caudal area 22 L
+caudal area 22 R
+lateral area 38 L
+lateral area 38 R
+rostral area 22 L
+rostral area 22 R
+caudal area 21 L
+caudal area 21 R
+rostral area 21 L
+rostral area 21 R
+dorsolateral area 37 L
+dorsolateral area 37 R
+anterior superior temporal sulcus L
+anterior superior temporal sulcus R
+intermediate ventral area 20 L
+intermediate ventral area 20 R
+extreme lateroventral area 37 L
+extreme lateroventral area 37 R
+rostral area 20 L
+rostral area 20 R
+intermediate lateral area 20 L
+intermediate lateral area 20 R
+ventrolateral area 37 L
+ventrolateral area 37 R
+caudolateral of area 20 L
+caudolateral of area 20 R
+caudoventral of area 20 L
+caudoventral of area 20 R
+rostroventral area 20 L
+rostroventral area 20 R
+medioventral area 37 L
+medioventral area 37 R
+lateroventral area 37 L
+lateroventral area 37 R
+rostral area 35/36 L
+rostral area 35/36 R
+caudal area 35/36 L
+caudal area 35/36 R
+area TL (lateral PPHC posterior parahippocampal gyrus) L
+area TL (lateral PPHC posterior parahippocampal gyrus) R
+area 28/34 (EC entorhinal cortex) L
+area 28/34 (EC entorhinal cortex) R
+area TI (temporal agranular insular cortex) L
+area TI (temporal agranular insular cortex) R
+area TH (medial PPHC) L
+area TH (medial PPHC) R
+rostroposterior superior temporal sulcus L
+rostroposterior superior temporal sulcus R
+caudoposterior superior temporal sulcus L
+caudoposterior superior temporal sulcus R
+rostral area 7 L
+rostral area 7 R
+caudal area 7 L
+caudal area 7 R
+lateral area 5 L
+lateral area 5 R
+postcentral area 7 L
+postcentral area 7 R
+intraparietal area 7 (hIP3) L
+intraparietal area 7 (hIP3) R
+caudal area 39 (PGp) L
+caudal area 39 (PGp) R
+rostrodorsal area 39 (Hip3) L
+rostrodorsal area 39 (Hip3) R
+rostrodorsal area 40 (PFt) L
+rostrodorsal area 40 (PFt) R
+caudal area 40 (PFm) L
+caudal area 40 (PFm) R
+rostroventral area 39 (PGa) L
+rostroventral area 39 (PGa) R
+rostroventral area 40 (PFop) L
+rostroventral area 40 (PFop) R
+medial area 7 (PEp) L
+medial area 7 (PEp) R
+medial area 5 (PEm) L
+medial area 5 (PEm) R
+dorsomedial parietooccipital  sulcus (PEr) L
+dorsomedial parietooccipital  sulcus (PEr) R
+area 31 (Lc1) L
+area 31 (Lc1) R
+area 1/2/3 (upper limb head and face region) L
+area 1/2/3 (upper limb head and face region) R
+area 1/2/3 (tongue and larynx region) L
+area 1/2/3 (tongue and larynx region) R
+area 2 L
+area 2 R
+area 1/2/3 (trunk region) L
+area 1/2/3 (trunk region) R
+hypergranular insula L
+hypergranular insula R
+ventral agranular insula L
+ventral agranular insula R
+dorsal agranular insula L
+dorsal agranular insula R
+ventral dysgranular and granular insula L
+ventral dysgranular and granular insula R
+dorsal granular insula L
+dorsal granular insula R
+dorsal dysgranular insula L
+dorsal dysgranular insula R
+dorsal area 23 L
+dorsal area 23 R
+rostroventral area 24 L
+rostroventral area 24 R
+pregenual area 32 L
+pregenual area 32 R
+ventral area 23 L
+ventral area 23 R
+caudodorsal area 24 L
+caudodorsal area 24 R
+caudal area 23 L
+caudal area 23 R
+subgenual area 32 L
+subgenual area 32 R
+caudal lingual gyrus L
+caudal lingual gyrus R
+rostral cuneus gyrus L
+rostral cuneus gyrus R
+caudal cuneus gyrus L
+caudal cuneus gyrus R
+rostral lingual gyrus L
+rostral lingual gyrus R
+ventromedial parietooccipital sulcus L
+ventromedial parietooccipital sulcus R
+middle occipital gyrus L
+middle occipital gyrus R
+area V5/MT+ L
+area V5/MT+ R
+occipital polar cortex L
+occipital polar cortex R
+inferior occipital gyrus L
+inferior occipital gyrus R
+medial superior occipital gyrus L
+medial superior occipital gyrus R
+lateral superior occipital gyrus L
+lateral superior occipital gyrus R
+medial amygdala L
+medial amygdala R
+lateral amygdala L
+lateral amygdala R
+rostral hippocampus L
+rostral hippocampus R
+caudal hippocampus L
+caudal hippocampus R
+ventral caudate L
+ventral caudate R
+globus pallidus L
+globus pallidus R
+nucleus accumbens L
+nucleus accumbens R
+ventromedial putamen L
+ventromedial putamen R
+dorsal caudate L
+dorsal caudate R
+dorsolateral putamen L
+dorsolateral putamen R
+medial pre-frontal thalamus L
+medial pre-frontal thalamus R
+pre-motor thalamus L
+pre-motor thalamus R
+sensory thalamus L
+sensory thalamus R
+rostral temporal thalamus L
+rostral temporal thalamus R
+posterior parietal thalamus L
+posterior parietal thalamus R
+occipital thalamus L
+occipital thalamus R
+caudal temporal thalamus L
+caudal temporal thalamus R
+lateral pre-frontal thalamus L
+lateral pre-frontal thalamus R
