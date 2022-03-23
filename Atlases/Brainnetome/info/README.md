@@ -1,4 +1,4 @@
-<h5>About the atlas:</h5>
+<h3>About the atlas:</h3>
 
 This folder contains the relevant files for the Brainnetome atlas, applied to the Human Connectome Project (Fan et al., 2016, doi: 10.1093/cercor/bhw157). The original files downloaded from https://atlas.brainnetome.org/download.html are fsaverage.BN_Atlas.32k_fs_LR.dlabel.nii (which only contains cortical regions) and BN_Atlas_246_2mm.nii.gz (which contains both cortical and subcortical regions) and BN_Atlas_246_LUT.txt.
 
@@ -18,7 +18,7 @@ wb_command -cifti-create-dense-from-template 91282_Greyordinates.dscalar.nii fsa
 
 ------------------------------------------------------------------------------------------
 
-<h5>About the annotation:</h5>
+<h3>About the annotation:</h3>
 
 All the annotated information about the regions can be found in the files BNA_subregions.xlsx and subregion_func_network_Yeo.csv on the official Brainnetome website (https://atlas.brainnetome.org/download.html). They are also findable in the brainGraph R-package in a convenient format.
 
