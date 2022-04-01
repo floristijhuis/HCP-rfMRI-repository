@@ -34,14 +34,14 @@ VISIT=${SUBJECTVISIT: -2}
 echo "Now working on Subject ${SUBJECT} during visit ${VISIT}"
 echo
 
+mkdir $outputpathhighest/${SUBJECT}
+mkdir $outputpathhighest/${SUBJECT}/${VISIT}
+
 for SESSION in "rfMRI_REST1" "rfMRI_REST2" # This makes sure to execute the same processing for both sessions (REST1 and REST2) separately
 do
 
 if [ -d $inputpathsubject/${SESSION}_AP ] && [ -d $inputpathsubject/${SESSION}_PA ] # Script will only proceed if the session as well as both of the phase encoding directions are present in the data. If you also want to include subjects with only 1 phase encoding direction, you can edit this to make it more liberal (concatenation will not be necessary, demeaning and variance normalization can still be done)
 then
-
-mkdir $outputpathhighest/${SUBJECT}
-mkdir $outputpathhighest/${SUBJECT}/${VISIT}
 
 echo "Now working on Session ${SESSION}"
 echo
