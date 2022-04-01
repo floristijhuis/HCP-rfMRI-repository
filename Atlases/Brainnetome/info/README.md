@@ -7,7 +7,7 @@ In order to create an atlas in CIFTI format with both subcortical and cortical r
 	<li>Extract the subcortical regions from the NIFTI atlas<br>
 		<code>fslmaths BN_Atlas_246_2mm.nii.gz -thr 211 BN_Atlas_246_2mm_subcortical.nii.gz</code></li>
 
-<li>First, the [BN_Atlas_246_LUT.txt file](./BN_Atlas_246_LUT.txt) was split up into a [cortical label file](./BN_Atlas_210_LUT.txt) and [subcortical label file](./BN_Atlas_labelannotation_subcortex.txt) and reformatted to import it as a volume label into the subcortical BNA atlas in NIFTI format. Then, this label file was used to create a labeled atlas:<br>
+<li>First, the BN_Atlas_246_LUT.txt file was split up into a cortical label file (BN_Atlas_labelannotation_210.txt) and subcortical label file (BN_Atlas_labelannotation_subcortex.txt) and reformatted to import it as a volume label into the subcortical BNA atlas in NIFTI format. Then, this label file was used to create a labeled atlas:<br>
 <code>wb_command -volume-label-import BN_Atlas_246_2mm_subcortical.nii.gz BN_Atlas_labelannotation_subcortex.txt BN_Atlas_246_2mm_subcortical_labeled.nii.gz</code></li>
 	
 
