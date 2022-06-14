@@ -27,70 +27,70 @@ echo $now
 for S in $filepathhighest/HCA*
 do
 
-SUBJECT=`basename ${S%%}`
+	SUBJECT=`basename ${S%%}`
 
-for V in $S/*
-do
+	for V in $S/*
+	do
 
-VISIT=`basename ${V%%}`
+		VISIT=`basename ${V%%}`
 
-echo "Now working on Subject $SUBJECT during Visit $VISIT"
-echo
+		echo "Now working on Subject $SUBJECT during Visit $VISIT"
+		echo
 
-for SESSION in "rfMRI_REST1" "rfMRI_REST2" #this makes sure to execute the same processing for both sessions (REST1 and REST2) separately. Can also be altered to do the parcellation for task data (e.g. "CARIT") or for all tasks present $V/*)
-do
+		for SESSION in "rfMRI_REST1" "rfMRI_REST2" #this makes sure to execute the same processing for both sessions (REST1 and REST2) separately. Can also be altered to do the parcellation for task data (e.g. "CARIT") or for all tasks present $V/*)
+		do
 
-if [ -f $V/${SESSION}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii ] #check to make sure that the file needed for the parcellation is present
-then
+			if [ -f $V/${SESSION}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii ] #check to make sure that the file needed for the parcellation is present
+			then
 
-echo "Now working on Session $SESSION"
-echo
+				echo "Now working on Session $SESSION"
+				echo
 
-########## Parcellating  ##########
+				########## Parcellating  ##########
 
-echo "Now starting parcellation..."
+				echo "Now starting parcellation..."
 
-# 1. Parcellating the concatenated time series for the specific atlas chosen
-# https://www.humanconnectome.org/software/workbench-command/-cifti-parcellate
-# See /Atlases for the different atlases that can be used
+				# 1. Parcellating the concatenated time series for the specific atlas chosen
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-parcellate
+				# See /Atlases for the different atlases that can be used
 
-mkdir $V/${SESSION}/${atlasname}
+				mkdir $V/${SESSION}/${atlasname}
 
-wb_command -cifti-parcellate $V/${SESSION}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii $atlaspath COLUMN $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii
+				wb_command -cifti-parcellate $V/${SESSION}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii $atlaspath COLUMN $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii
 
-echo "Done with parcellation!"
+				echo "Done with parcellation!"
 
-echo "Now starting conversion to .txt..."
-# 2. Converting the parcellated time series to a .txt file
-# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
+				echo "Now starting conversion to .txt..."
+				# 2. Converting the parcellated time series to a .txt file
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
 
-wb_command -cifti-convert -to-text $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.txt
+				wb_command -cifti-convert -to-text $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii $V/${SESSION}/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.txt
 
-echo "Done with conversion to .txt!"
-echo
-echo "Done with Session $SESSION!"
-echo
+				echo "Done with conversion to .txt!"
+				echo
+				echo "Done with Session $SESSION!"
+				echo
 
-else
-echo "Session $SESSION does not exist for $SUBJECT during $VISIT, SKIPPING..."
+			else
+				echo "Session $SESSION does not exist for $SUBJECT during $VISIT, SKIPPING..."
 
-fi
+			fi
 
-done
+		done
 
-echo "Done with Visit $VISIT!"
-echo
-echo
+		echo "Done with Visit $VISIT!"
+		echo
+		echo
 
-done
+	done
 
-echo "Done with Subject $SUBJECT!"
-echo
-echo
+	echo "Done with Subject $SUBJECT!"
+	echo
+	echo
 
 done
 
 echo "Processing done!"
 
 then=$(date)
-echo $then
+	echo $then
