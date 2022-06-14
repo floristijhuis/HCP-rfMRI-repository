@@ -19,22 +19,22 @@ outputpath=/Atlases/Glasser/annotation
 ########## Extracting coordinates from left hemisphere, right hemisphere, and subcortex ##########
 
 for i in {1..180}
-do
+  do
 
-fslstats $inputpath/MMP_in_MNI_corr.nii.gz -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
+  fslstats $inputpath/MMP_in_MNI_corr.nii.gz -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
 
-done
+  done
 
 for i in {201..380}
-do
+  do
 
-fslstats $inputpath/MMP_in_MNI_corr.nii.gz -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
+  fslstats $inputpath/MMP_in_MNI_corr.nii.gz -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
 
-done
+  done
 
 for i in {361..379}
-do
+  do
 
-fslstats $inputpath/FreesurferSubcortex.nii -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
+  fslstats $inputpath/FreesurferSubcortex.nii -l `expr $i - 1` -u `expr $i + 1` -c >> $outputpath/GlasserFreesurfer_positions.txt
 
-done
+  done
