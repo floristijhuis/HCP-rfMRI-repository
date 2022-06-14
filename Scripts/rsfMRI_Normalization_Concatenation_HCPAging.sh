@@ -96,4 +96,4 @@ done
 echo "Processing done!"
 
 then=$(date)
-	echo $then
+echo $then
