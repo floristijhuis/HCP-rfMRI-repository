@@ -16,18 +16,18 @@
 
 export PATH=/mnt/software/workbench/bin_rh_linux64:${PATH} #this needs to point to path where wb_command is installed
 
-tempfolder="/data/KNW/f.tijhuis/temp" #this is the folder where the intermediate files are stored
-outputpathhighest="/data/public_data/HCPYoungAdultDerivatives" #where you want to put the output, needs to exist
+tempfolder="[TEMPFOLDER]" #this is the folder where the intermediate files will be stored
+outputpathhighest="[OUTPUTDIRECTORY]" #where you want to put the output, needs to exist
 
-subjectlist="/data/KNW/f.tijhuis/scripts/HCPYoungAdultSubjects3.txt" #this needs to point to a txt file that contains the subject id's that you want to process/download, e.g. 100206. The file we used included all subjects with rfMRI scans 
+subjectlist="[SUBJECTLIST].txt" #this needs to point to a txt file that contains the subject id's that you want to process/download, e.g. 100206. The file we used included all subjects with rfMRI scans 
 
-declare -A atlasdict #this includes all the atlases that you want to use for parcellation and will be looped over later. It includes both the file path (needs to refer to a .dlabel.nii atlas) and the custom name of the output folders containing the time series (this can be selected by you)
-atlasdict=( ["/data/KNW/f.tijhuis/Atlases/Schaefer/100regions7networks/Schaefer2018_100Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_100Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Schaefer/1000regions7networks/Schaefer2018_1000Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_1000Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Schaefer/400regions7networks/Schaefer2018_400Parcels_7Networks_order_Tian_Subcortex_S1.dlabel.nii"]="Schaefer2018_400Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Brainnetome/fsaverage.BN_Atlas.32k_fs_LR_246regions.dlabel.nii"]="fsaverage.BN_Atlas.32k_fs_LR_246regions"
-["/data/KNW/f.tijhuis/Atlases/Gordon/Gordon333.32k_fs_LR_Tian_Subcortex_S1.dlabel.nii"]="Gordon333.32k_fs_LR_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Glasser/Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii"]="GlasserFreesurfer")
+declare -A atlasdict #this includes all the atlases that you want to use for parcellation and will be looped over later. The key indicates the file path to the atlas (needs to refer to a .dlabel.nii atlas) and the value describes the custom name of the output directories/files (this can be selected by you)
+atlasdict=( ["/Atlases/Schaefer/100regions7networks/Schaefer2018_100Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_100Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Schaefer/1000regions7networks/Schaefer2018_1000Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_1000Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Schaefer/400regions7networks/Schaefer2018_400Parcels_7Networks_order_Tian_Subcortex_S1.dlabel.nii"]="Schaefer2018_400Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Brainnetome/fsaverage.BN_Atlas.32k_fs_LR_246regions.dlabel.nii"]="fsaverage.BN_Atlas.32k_fs_LR_246regions"
+["/Atlases/Gordon/Gordon333.32k_fs_LR_Tian_Subcortex_S1.dlabel.nii"]="Gordon333.32k_fs_LR_Tian_Subcortex_S1_3T"
+["/Atlases/Glasser/Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii"]="GlasserFreesurfer")
 
 ########## Looping over the subjects and the sessions ##########
 
@@ -60,87 +60,87 @@ do
 		if [ -f $tempfolder/${SUBJECT}_${SESSION}_LR_Atlas_MSMAll_hp2000_clean.dtseries.nii ] && \
 			[ -f $tempfolder/${SUBJECT}_${SESSION}_RL_Atlas_MSMAll_hp2000_clean.dtseries.nii ] # Script will only proceed if the session as well as both of the phase encoding directions have been properly downloaded from the server. If you also want to include subjects with only 1 phase encoding direction, you can edit this to make it more liberal (concatenation will not be necessary, demeaning and variance normalization can still be done)
 
-	then
+		then
 
-		mkdir $outputpathhighest/${SUBJECT}
-		mkdir $outputpathhighest/${SUBJECT}/${SESSION}
-		outputpathsession=$outputpathhighest/${SUBJECT}/${SESSION}
+			mkdir $outputpathhighest/${SUBJECT}
+			mkdir $outputpathhighest/${SUBJECT}/${SESSION}
+			outputpathsession=$outputpathhighest/${SUBJECT}/${SESSION}
 
-		########## Preprocessing ###########
+			########## Preprocessing ###########
 
-		echo "Starting demeaning, variance-normalization, and concatenating..."
-		echo
-		# Demean, Variance-Normalize time series from 2 different phase encoding directions individually, then concatenate them
-		# https://wiki.humanconnectome.org/display/PublicData/HCP+Users+FAQ
-		# https://www.humanconnectome.org/software/workbench-command/-cifti-math
-		# https://www.humanconnectome.org/software/workbench-command/-cifti-merge
+			echo "Starting demeaning, variance-normalization, and concatenating..."
+			echo
+			# Demean, Variance-Normalize time series from 2 different phase encoding directions individually, then concatenate them
+			# https://wiki.humanconnectome.org/display/PublicData/HCP+Users+FAQ
+			# https://www.humanconnectome.org/software/workbench-command/-cifti-math
+			# https://www.humanconnectome.org/software/workbench-command/-cifti-merge
 
-		for PED in "LR" "RL" # This makes sure to execute demeaning and variance normalization for both phase encoding directions separately
-		do
+			for PED in "LR" "RL" # This makes sure to execute demeaning and variance normalization for both phase encoding directions separately
+			do
 
-			echo "Demeaning and variance normalization of ${SESSION}_${PED}..."
-			wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii MEAN $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_mean.dscalar.nii
-			wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii STDEV $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_stdev.dscalar.nii
+				echo "Demeaning and variance normalization of ${SESSION}_${PED}..."
+				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii MEAN $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_mean.dscalar.nii
+				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii STDEV $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_stdev.dscalar.nii
 
-			wb_command -cifti-math '((x-mean)/stdev)' $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii -fixnan 0 -var x $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii -var mean $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_mean.dscalar.nii -select 1 1 -repeat -var stdev $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_stdev.dscalar.nii -select 1 1 -repeat
+				wb_command -cifti-math '((x-mean)/stdev)' $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii -fixnan 0 -var x $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean.dtseries.nii -var mean $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_mean.dscalar.nii -select 1 1 -repeat -var stdev $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp2000_clean_stdev.dscalar.nii -select 1 1 -repeat
 
+				echo
+
+			done
+
+			echo "Concatenating ${SESSION}_LR and ${SESSION}_RL..."
+			wb_command -cifti-merge $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_LR_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_RL_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii
+
+			echo "Done with demeaning, variance-normalization, and concatenation!"
 			echo
 
-		done
+			########## Preprocessing ###########
+			echo "Now starting parcellation..."
 
-		echo "Concatenating ${SESSION}_LR and ${SESSION}_RL..."
-		wb_command -cifti-merge $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_LR_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_RL_Atlas_MSMAll_hp2000_clean_demeaned_vnormalized.dtseries.nii
+			for item in "${!atlasdict[@]}"
+			do
+				atlasname=${atlasdict[$item]}
+				atlaspath=$item
 
-		echo "Done with demeaning, variance-normalization, and concatenation!"
-		echo
+				echo "Now parcellating using atlas $atlasname..."
 
-		########## Preprocessing ###########
-		echo "Now starting parcellation..."
+				# 1. Parcellating the concatenated time series for the specific atlas chosen
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-parcellate
+				# See /Atlases for the different atlases that can be used
 
-		for item in "${!atlasdict[@]}"
-		do
-			atlasname=${atlasdict[$item]}
-			atlaspath=$item
+				mkdir $outputpathsession/${atlasname}
 
-			echo "Now parcellating using atlas $atlasname..."
+				wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii
 
-			# 1. Parcellating the concatenated time series for the specific atlas chosen
-			# https://www.humanconnectome.org/software/workbench-command/-cifti-parcellate
-			# See /Atlases for the different atlases that can be used
+				echo "Done with parcellation for atlas $atlasname!"
 
-			mkdir $outputpathsession/${atlasname}
+				echo "Now starting conversion to .txt..."
+				# 2. Converting the parcellated time series to a .txt file
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
 
-			wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii
+				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.txt
 
-			echo "Done with parcellation for atlas $atlasname!"
+				echo "Done with conversion to .txt for atlas $atlasname!"
+				echo
+			done
 
-			echo "Now starting conversion to .txt..."
-			# 2. Converting the parcellated time series to a .txt file
-			# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
-
-			wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.txt
-
-			echo "Done with conversion to .txt for atlas $atlasname!"
+			echo "Done with parcellation"
 			echo
-		done
+			echo "Done with Session $SESSION!"
+			echo
 
-		echo "Done with parcellation"
-		echo
-		echo "Done with Session $SESSION!"
-		echo
+		else
+			echo "Session $SESSION is not complete for $SUBJECT, SKIPPING..."
 
-	else
-		echo "Session $SESSION is not complete for $SUBJECT, SKIPPING..."
+		fi
 
-	fi
+	done
 
-done
+	echo "Done with Subject $SUBJECT!"
+	echo
+	echo
 
-echo "Done with Subject $SUBJECT!"
-echo
-echo
-
-rm $tempfolder/*
+	rm $tempfolder/*
 
 done < $subjectlist
 
