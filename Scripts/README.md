@@ -4,7 +4,7 @@ This folder contains the scripts used for processing the HCP data. There are 4 m
     <li>bna_atlas_correct_numbering_vertices.m: This script was used to adapt the numbering of the regions of the Brainnetome atlas so that it could be used as a CIFTI file in combination with wb_command</li>
  <h3>Processing-related scripts:</h3>
     <li>rsfMRI_Download_Normalization_Concatenation_Parcellation_HCPAging.sh: This is the script that is used to generate the time series for the subjects from the HCP-Aging database.</li>
-    <li>rsfMRI_Download_Normalization_Concatenation_Parcellation_HCPYA.sh: This is the script that is used to generate the time series for the subjects from the HCP-Young Adult database</li>
+    <li>rsfMRI_Download_Normalization_Concatenation_Parcellation_HCPYA.sh: This is the script that is used to generate the time series for the subjects from the HCP-Young Adult database.</li>
 
 <br/>
 The above 2 scripts perform several processing steps while looping over a list of subjects and their associated resting-state scans. For an example of a subject list for those subjects with resting-state scans, refer to /Files/HCPAging_SubjectList.txt and /Files/HCPYA_Subjectlist.txt. The script performs the following steps:
