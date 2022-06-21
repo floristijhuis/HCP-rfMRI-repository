@@ -15,6 +15,6 @@ First, the Glasser cortical atlas in NIFTI format was downloaded from https://ne
 
 <code>wb_command -cifti-separate Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii COLUMN -volume-all FreesurferSubcortex.nii</code>
 
-Then, the coordinates were obtained and put in the annotation file using [this script (COGparcelsGlasser.sh)](../../../Scripts/COGparcelsGlasser.sh)</li>
+Then, the coordinates were obtained and put in the annotation file using [COGparcelsGlasser.sh](../../../Scripts/COGparcelsGlasser.sh)</li>
 
   <li>The ascription of the regions to the Yeo subnetworks was taken from https://brainlab.sitehost.iu.edu/resources/hcp_mmp10_yeo7_modes.pdf, based on the method described in Byrge and Kennedy, 2019 (https://doi.org/10.1162/netn_a_00068)</li>
