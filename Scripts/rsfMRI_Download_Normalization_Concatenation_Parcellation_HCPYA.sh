@@ -126,6 +126,9 @@ do
 
 			echo "Done with parcellation"
 			echo
+			
+			rm $outputpathsession/$SUBJECT*
+			
 			echo "Done with Session $SESSION!"
 			echo
 
