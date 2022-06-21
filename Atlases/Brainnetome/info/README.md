@@ -12,7 +12,7 @@ In order to create an atlas in CIFTI format with both subcortical and cortical r
 	
 
 <li>The CIFTI cortical file had some issues with the labeling of the vertices and the regions (with some impossible regions that led to empty rows in the time series). Therefore, this was first fixed:
-	<ol><li>The numbering of the vertices was first altered using [bna_atlas_correct_numbering.m](https://github.com/floristijhuis/HCPAgingFloris/blob/master/Scripts/bna_atlas_correct_numbering.m) (to put the vertices of the right hemisphere in the correct label)</li>
+	<ol><li>The numbering of the vertices was first altered using [bna_atlas_correct_numbering_vertices.m](../../../Scripts/bna_atlas_correct_numbering_vertices.m) (to put the vertices of the right hemisphere in the correct label)</li>
 	<li>The label numbers were changed:<br> <code>wb_command -cifti-label-import fsaverage.BN_Atlas.32k_fs_LR_verticescorrect.dlabel.nii BN_Atlas_labelannotation_210.txt fsaverage.BN_Atlas.32k_fs_LR_verticeslabelscorrect.dlabel.nii</code></li></ol>
 
 <li>Lastly, the correct cortical file was merged with the labeled subcortical file:<br>
