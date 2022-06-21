@@ -15,23 +15,23 @@
 
 export PATH=/mnt/software/workbench/bin_rh_linux64:${PATH} #this needs to point to path where wb_command is installed
 
-tempfolder="/data/KNW/f.tijhuis/temp" #this is the folder where the intermediate files are stored
-outputpathhighest="/data/KNW/f.tijhuis/playground" #where you want to put the output, needs to exist
+tempfolder="[TEMPFOLDER]" #this is the folder where the intermediate files will be stored
+outputpathhighest="[OUTPUTDIRECTORY]" #where you want to put the output, needs to exist
 
-subjectlist="/data/KNW/f.tijhuis/playground/HCPAgingSubjects2.txt" #this needs to point to a txt file that contains the subject id's that you want to process/download, e.g. HCA6002236_V1_MR. The file we used included all subjects with rfMRI scans.
-datastructuremanifest="/data/KNW/f.tijhuis/playground/HCPAgingMetaData/datastructure_manifest.txt" #this is a pre-downloaded file that contains the full file path of all HCP Aging files on the NDA server
+subjectlist="[SUBJECTLIST].txt" #this needs to point to a txt file that contains the subject id's that you want to process/download, e.g. HCA6002236_V1_MR. The file we used included all subjects with rfMRI scans.
+datastructuremanifest="[DIRECTORY]/datastructure_manifest.txt" #this is a downloadable file from the NDA server that contains the full file path of all HCP Aging files on the NDA server
 
-ndausername="ftijhuis" 
-ndapassword="Scha3p19!"
-datapackage="1194773" #this is the data package number corresponding to the rfMRIpreprocessed data package in NDA (can be looked up in your account). this data package contains all the necessary files
+ndausername="[USERNAME]"
+ndapassword="[PASSWORD]"
+datapackage="1194773" #this is the data package number corresponding to the rfMRIpreprocessed data package in NDA (can be looked up in your account). This data package contains all the necessary files. Check if the number is correct in your own account!
 
-declare -A atlasdict #this includes all the atlases that you want to use for parcellation and will be looped over later. It includes both the file path (needs to refer to a .dlabel.nii atlas) and the custom name of the output folders containing the time series (this can be selected by you)
-atlasdict=( ["/data/KNW/f.tijhuis/Atlases/Schaefer/100regions7networks/Schaefer2018_100Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_100Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Schaefer/1000regions7networks/Schaefer2018_1000Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_1000Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Schaefer/400regions7networks/Schaefer2018_400Parcels_7Networks_order_Tian_Subcortex_S1.dlabel.nii"]="Schaefer2018_400Parcels_7Networks_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Brainnetome/fsaverage.BN_Atlas.32k_fs_LR_246regions.dlabel.nii"]="fsaverage.BN_Atlas.32k_fs_LR_246regions"
-["/data/KNW/f.tijhuis/Atlases/Gordon/Gordon333.32k_fs_LR_Tian_Subcortex_S1.dlabel.nii"]="Gordon333.32k_fs_LR_Tian_Subcortex_S1_3T"
-["/data/KNW/f.tijhuis/Atlases/Glasser/Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii"]="GlasserFreesurfer")
+declare -A atlasdict  #this includes all the atlases that you want to use for parcellation and will be looped over later. The key indicates the file path to the atlas (needs to refer to a .dlabel.nii atlas) and the value describes the custom name of the output directories/files (this can be selected by you)
+atlasdict=( ["/Atlases/Schaefer/100regions7networks/Schaefer2018_100Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_100Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Schaefer/1000regions7networks/Schaefer2018_1000Parcels_7Networks_order_Tian_Subcortex_S1_3T.dlabel.nii"]="Schaefer2018_1000Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Schaefer/400regions7networks/Schaefer2018_400Parcels_7Networks_order_Tian_Subcortex_S1.dlabel.nii"]="Schaefer2018_400Parcels_7Networks_Tian_Subcortex_S1_3T"
+["/Atlases/Brainnetome/fsaverage.BN_Atlas.32k_fs_LR_246regions.dlabel.nii"]="fsaverage.BN_Atlas.32k_fs_LR_246regions"
+["/Atlases/Gordon/Gordon333.32k_fs_LR_Tian_Subcortex_S1.dlabel.nii"]="Gordon333.32k_fs_LR_Tian_Subcortex_S1_3T"
+["/Atlases/Glasser/Q1-Q6_RelatedValidation210.CorticalAreas_dil_Final_Final_Areas_Group_Colors_with_Atlas_ROIs2.32k_fs_LR.dlabel.nii"]="GlasserFreesurfer")
 
 ########## Looping over the subjects and the sessions ##########
 
@@ -65,11 +65,11 @@ do
 
 	        then
 
-                downloadcmd $file_relative_path_ap -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
-                mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_AP/${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii
+                	downloadcmd $file_relative_path_ap -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
+                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_AP/${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii
 
-		downloadcmd $file_relative_path_pa -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
-                mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_PA/${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii
+			downloadcmd $file_relative_path_pa -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
+                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_PA/${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii
 
 			mkdir $outputpathhighest/${SUBJECT}
                 	mkdir $outputpathhighest/${SUBJECT}/${VISIT}
