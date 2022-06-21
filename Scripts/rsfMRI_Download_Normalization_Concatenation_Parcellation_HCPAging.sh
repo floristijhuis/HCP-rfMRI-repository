@@ -19,7 +19,7 @@ tempfolder="[TEMPFOLDER]" #this is the folder where the intermediate files will 
 outputpathhighest="[OUTPUTDIRECTORY]" #where you want to put the output, needs to exist
 
 subjectlist="[SUBJECTLIST].txt" #this needs to point to a txt file that contains the subject id's that you want to process/download, e.g. HCA6002236_V1_MR. The file we used included all subjects with rfMRI scans.
-datastructuremanifest="[DIRECTORY]/datastructure_manifest.txt" #this is a downloadable file from the NDA server that contains the full file path of all HCP Aging files on the NDA server
+datastructuremanifest="[DIRECTORY]/datastructure_manifest.txt" #this is a downloadable file from the NDA server that contains the full file path of all HCP Aging files on the NDA server. Is REQUIRED for this script!
 
 ndausername="[USERNAME]"
 ndapassword="[PASSWORD]"
