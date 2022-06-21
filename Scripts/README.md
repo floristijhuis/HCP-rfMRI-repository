@@ -7,7 +7,7 @@ This folder contains the scripts used for processing the HCP data. There are 4 m
     <li>rsfMRI_Download_Normalization_Concatenation_Parcellation_HCPYA.sh: This is the script that is used to generate the time series for the subjects from the HCP-Young Adult database.</li>
 
 <br/>
-The above 2 scripts perform several processing steps while looping over a list of subjects and their associated resting-state scans. For an example of a subject list for those subjects with resting-state scans, refer to /Files/HCPAging_SubjectList.txt and /Files/HCPYA_Subjectlist.txt. The script performs the following steps:
+The above 2 scripts perform several processing steps while looping over a list of subjects and their associated resting-state scans. For an example of a subject list for those subjects with resting-state scans, refer to /SubjectLists/HCPAging_SubjectList.txt and /SubjectLists/HCPYA_SubjectList.txt. The script performs the following steps:
 <ol>
     <li> Downloading the subject data from the server (specifically, for each complete resting state scan it downloads 2 sub-scans with opposite phase encoding directions</li>
     <li> Normalizing the 2 discontinuous sub-scans with opposite phase encoding directions using demeaning and variance normalization</li>
