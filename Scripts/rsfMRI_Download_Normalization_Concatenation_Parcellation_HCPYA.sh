@@ -101,26 +101,47 @@ do
 			do
 				atlasname=${atlasdict[$item]}
 				atlaspath=$item
-
-				echo "Now parcellating using atlas $atlasname..."
-
+				
 				# 1. Parcellating the concatenated time series for the specific atlas chosen
 				# https://www.humanconnectome.org/software/workbench-command/-cifti-parcellate
 				# See /Atlases for the different atlases that can be used
 
+				echo "Now parcellating time series using atlas $atlasname..."
+
 				mkdir $outputpathsession/${atlasname}
 
-				wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii
+				wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_timeseries.ptseries.nii
 
 				echo "Done with parcellation for atlas $atlasname!"
 
-				echo "Now starting conversion to .txt..."
 				# 2. Converting the parcellated time series to a .txt file
 				# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
+				
+				echo "Now starting conversion of time series to .txt..."
 
-				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}.txt
+				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_timeseries.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_timeseries.txt
 
-				echo "Done with conversion to .txt for atlas $atlasname!"
+				echo "Done with conversion to .txt!"
+				echo
+				
+				# 3. Creating the connectivity matrix using simple Pearson correlation
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-correlate
+				# This is optional; for some applications you may only need the time series (e.g. if you want to create the connectivity matrices in a different way. In this case, comment out section 3 and 4
+
+				echo "Now creating connectivity matrix using Pearson correlation..."
+				
+				wb_command -cifti-correlate $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_timeseries.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_connmatrix.pconn.nii
+
+				echo "Done with parcellation for atlas $atlasname!"
+
+				# 4. Converting the connectivity matrix to a .txt file
+				# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
+
+				echo "Now starting conversion of connectivity matrix to .txt..."
+
+				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_connmatrix.pconn.nii  $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp2000_clean_${atlasname}_connmatrix.txt
+
+				echo "Done with conversion to .txt!"
 				echo
 			done
 
