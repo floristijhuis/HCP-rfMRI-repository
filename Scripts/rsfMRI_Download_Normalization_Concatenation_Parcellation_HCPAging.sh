@@ -149,7 +149,7 @@ do
 
 				echo "Now starting conversion of connectivity matrix to .txt..."
 
-				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.txt
+				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}_connmatrix.pconn.nii $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}_connmatrix.txt
 
 				echo "Done with conversion to .txt!"
 				echo
