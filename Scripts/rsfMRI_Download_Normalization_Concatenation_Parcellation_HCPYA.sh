@@ -34,7 +34,7 @@ atlasdict=( ["/Atlases/Schaefer/100regions7networks/Schaefer2018_100Parcels_7Net
 now=$(date)
 echo $now
 
-while read line # This loops over all the lines of the subjectlist file and executes the downloading and normalization for each of these subjects separately
+while read line # This loops over all the lines of the subjectlist file and executes the downloading, normalization, and parcellation for each of these subjects separately
 do
 
 	SUBJECT=$line
