@@ -171,4 +171,4 @@ done < $subjectlist
 echo "Processing done!"
 
 then=$(date)
-	echo $then
+echo $then
