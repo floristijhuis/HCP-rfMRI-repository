@@ -155,7 +155,7 @@ do
 				echo
 			done
 
-			echo "Done with parcellation!
+			echo "Done with parcellation!"
 			echo
 			
 			rm $outputpathsession/$SUBJECT*
