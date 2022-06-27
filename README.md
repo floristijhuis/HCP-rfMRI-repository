@@ -1,6 +1,6 @@
 # HCPFloris
 
-This github repository was made by Floris Tijhuis as part of a research assistantship at the Institute for Advanced Study (IAS) Amsterdam and the Vrije Universiteit Medisch Centrum (VUmc) Amsterdam. The goal of the project was to create a database containing (pre)processed time series and connectivity matrices of the resting-state functional MRI scans of two large-scale neuroimaging databases of the Human Connectome Project; the HCP-Aging database (February 2021 release) and the HCP-Young Adult database.
+This GitHub repository was created by Floris Tijhuis as part of a research assistantship at the Institute for Advanced Study (IAS) Amsterdam and the Vrije Universiteit Medisch Centrum (VUmc) Amsterdam. The goal of the project was to create a database containing (pre)processed time series and connectivity matrices of the resting-state functional MRI scans of two large-scale neuroimaging databases of the Human Connectome Project; the HCP-Aging database (February 2021 release) and the HCP-Young Adult database.
 
 This repository contains several different types of files and scripts;
 * /ConnectivityMatrices contains the connectivity matrices for each subject in the two databases, parcellated using different brain atlases (i.e. predefined sets of brain regions). The connectivity matrices were obtained by performing a simple Pearson correlation on the time series.
