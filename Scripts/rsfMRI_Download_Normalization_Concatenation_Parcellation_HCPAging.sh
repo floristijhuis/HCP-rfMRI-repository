@@ -167,9 +167,8 @@ do
 			echo "Session $SESSION is not complete for $SUBJECT, SKIPPING..."
 
 	        fi
-
-done
-
+	done
+	
 echo "Done with Subject $SUBJECT!"
 echo
 echo
