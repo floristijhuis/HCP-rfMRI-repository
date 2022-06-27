@@ -1,4 +1,4 @@
-# HCPFloris
+# Human Connectome Project rfMRI repository
 
 This GitHub repository was created by Floris Tijhuis as part of a research assistantship at the Institute for Advanced Study (IAS) Amsterdam and the Vrije Universiteit Medisch Centrum (VUmc) Amsterdam. The goal of the project was to create a database containing (pre)processed time series and connectivity matrices of the resting-state functional MRI scans of two large-scale neuroimaging databases of the Human Connectome Project; the HCP-Aging database (February 2021 release) and the HCP-Young Adult database.
 
