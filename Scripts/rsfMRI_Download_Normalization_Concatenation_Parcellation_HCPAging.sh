@@ -66,10 +66,10 @@ do
 	        then
 
                 	downloadcmd $file_relative_path_ap -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
-                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_AP/${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii
+                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_AP/${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${VISIT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean.dtseries.nii
 
 			downloadcmd $file_relative_path_pa -u $ndausername -p $ndapassword -d $tempfolder -dp $datapackage -q
-                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_PA/${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii
+                	mv ${tempfolder}/fmriresults01/$S/MNINonLinear/Results/${SESSION}_PA/${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii $tempfolder/${SUBJECT}_${VISIT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean.dtseries.nii
 
 			mkdir $outputpathhighest/${SUBJECT}
                 	mkdir $outputpathhighest/${SUBJECT}/${VISIT}
@@ -89,17 +89,17 @@ do
 			do
 
 				echo "Demeaning and variance normalization of ${SESSION}_${PED}..."
-				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii MEAN $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_mean.dscalar.nii
-				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii STDEV $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_stdev.dscalar.nii
+				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii MEAN $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_mean.dscalar.nii
+				wb_command -cifti-reduce $tempfolder/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii STDEV $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_stdev.dscalar.nii
 
-				wb_command -cifti-math '((x-mean)/stdev)' $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii -fixnan 0 -var x $tempfolder/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii -var mean $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_mean.dscalar.nii -select 1 1 -repeat -var stdev $outputpathsession/${SUBJECT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_stdev.dscalar.nii -select 1 1 -repeat
+				wb_command -cifti-math '((x-mean)/stdev)' $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii -fixnan 0 -var x $tempfolder/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean.dtseries.nii -var mean $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_mean.dscalar.nii -select 1 1 -repeat -var stdev $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_${PED}_Atlas_MSMAll_hp0_clean_stdev.dscalar.nii -select 1 1 -repeat
 
 				echo
 
 			done
 
 			echo "Concatenating ${SESSION}_AP and ${SESSION}_PA..."
-			wb_command -cifti-merge $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii
+			wb_command -cifti-merge $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_AP_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii -cifti $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_PA_Atlas_MSMAll_hp0_clean_demeaned_vnormalized.dtseries.nii
 
 			echo "Done with demeaning, variance-normalization, and concatenation!"
 			echo
@@ -120,7 +120,7 @@ do
 
 				mkdir $outputpathsession/${atlasname}
 
-				wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii
+				wb_command -cifti-parcellate $outputpathsession/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean.dtseries.nii $atlaspath COLUMN $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii
 
 				echo "Done with parcellation for atlas $atlasname!"
 
@@ -128,7 +128,7 @@ do
 				# 2. Converting the parcellated time series to a .txt file
 				# https://www.humanconnectome.org/software/workbench-command/-cifti-convert
 
-				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.txt
+				wb_command -cifti-convert -to-text $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.ptseries.nii $outputpathsession/${atlasname}/${SUBJECT}_${VISIT}_${SESSION}_Atlas_MSMAll_hp0_clean_${atlasname}.txt
 
 				echo "Done with conversion to .txt for atlas $atlasname!"
 				echo
