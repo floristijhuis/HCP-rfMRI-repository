@@ -8,4 +8,4 @@ This repository contains several different types of files and scripts;
 * /Scripts contains all the scripts necessary to generate the time series and connectivity matrices for the subjects in the HCP-Young Adult and HCP-Aging databases. Moreover, it contains some scripts that were required for the generation of the brain atlases or information files on the atlases.
 * /SubjectLists contains .txt files with the subject identifiers for all the subjects present in the separate databases. These subject lists are called by the main scripts in /Scripts and can be altered in order to create time series/connectivity matrices of a subset of participants or new releases of the HCP-Aging database.
 
-For a more elaborate explanation of the data, scripts, etc., please refer to the accompanying manual.
+For a more elaborate explanation of the data, processing steps and how to navigate this repository, please refer to the accompanying manual.
