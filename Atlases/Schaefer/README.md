@@ -1,6 +1,6 @@
 <h3>About the atlas:</h3>
 
-This folder contains the relevant files for the Schaefer atlas, applied to the Human Connectome Project (Schaefer et al., 2018, doi: 10.1093/cercor/bhx179). This atlas was used in 3 different resolutions (100 regions, 400 regions, 1000 regions). It was combined with the S1-version of the Tian subcortical atlas (Tian et al., 2020, doi: 10.1038/s41593-020-00711-6). For more information about why these parameters were picked, see USERLINK/ATLASES
+This folder contains the relevant files for the Schaefer atlas, applied to the Human Connectome Project (Schaefer et al., 2018, doi: 10.1093/cercor/bhx179). This atlas was used in 3 different resolutions (100 regions, 400 regions, 1000 regions). It was combined with the S1-version of the Tian subcortical atlas (Tian et al., 2020, doi: 10.1038/s41593-020-00711-6).
 
 The combined cortical and subcortical atlas could directly be downloaded for the 400-region resolution from https://github.com/yetianmed/subcortex/tree/master/Group-Parcellation. For the other resolutions, it had to be constructed manually by combining the Schafer atlas in the desired resolution (https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/brain_parcellation/Schaefer2018_LocalGlobal/Parcellations) with the subcortical atlas (also downloaded from the Tian Github page). This was performed in the following way:
 
