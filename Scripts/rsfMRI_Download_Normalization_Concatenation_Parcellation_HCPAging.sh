@@ -6,7 +6,7 @@
 
 # Requirements for this script
 #  installed versions of: wb_command and nda-tools (python package)
-#  a username/password combination to access the HCP-Aging data and a data package linked to your account containing the HCP-Aging (rfMRI) files
+#  a username/password combination to access the HCP-Aging data and a data package linked to your account containing the HCP-Aging (rfMRI) files. for information on how to do this, refer to the Data Access and Download instructions of the HCP Aging database
 
 # This script can be used to download HCP-Aging resting-state scans from the NDA server, execute the recommended further preprocessing, and parcellate the time series using pre-made CIFTI atlases. The processing part of the script standardizes two separate scans and then concatenates them. Though we were primarily interested in concatenating resting-state scans, the script can be adapted for different purposes as well (e.g. for the concatenation of all task data). Moreover, the atlasdictionary can be altered to yield time series from different parcellations as well.
 
