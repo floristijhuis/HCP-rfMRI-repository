@@ -1,6 +1,6 @@
-<h3>Atlases Parcellation HCP-Aging</h3>
+<h3>Brain Atlases for Parcellation</h3>
 
-This folder contains the atlases that were used to parcellate the data from the Human Connectome Project - Aging in this project, as well as annotation files that describe several features of the atlas. Moreover, it contains several README.md files that explain how the atlases and annotation files were downloaded or otherwise obtained. Each atlas-specific folder contains at least the following files:
+This folder contains the atlases that were used to parcellate the data from the Human Connectome Project, as well as annotation files that describe several features of the atlas. Moreover, it contains several README.md files that explain how the atlases and annotation files were downloaded or otherwise obtained. Each atlas-specific folder contains at least the following files:
 
 <ol>
   <li>Atlas: The specific atlas in CIFTI format. The CIFTI format was used in order to ensure compatibility with the data from the HCP. Reasons for picking these specific atlases are summarized in the manual present in the root folder.</li>
