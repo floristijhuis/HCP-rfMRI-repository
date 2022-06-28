@@ -7,7 +7,7 @@
 # Requirements for this script
 #  installed versions of: wb_command and AWS CLI (command line installer)
 #  access to Connectome DB and a personal access key for the AWS S3 storage
-#  configured/bucketed version of the HCP-YA database on your system (achieved using aws configure; see https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+#  configured/bucketed version of the HCP-YA database on your system (achieved using aws configure; see https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). use your own AWS credentials for the HCP database for this (find them on db.humanconnectome.org)
 
 # This script can be used to download HCP-YA scanning data from the server of Connectome DB and execute the recommended further preprocessing. The processing part of the script standardizes two separate scans and then concatenates them. Though we were primarily interested in concatenating resting-state scans, the script can be adapted for different purposes as well (e.g. for the concatenation of all task data).
 
