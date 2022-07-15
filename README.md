@@ -12,4 +12,4 @@ For a more elaborate explanation of the data, processing steps and how to naviga
 
 If you use this repository or the scripts in this repository, please cite in the following way:
 
-*Tijhuis, F., Schepers, M., Centeno, E., Maciel, B., Douw, L., Nobrega Santos, F. Human Connectome project rfMRI repository. San Francisco (CA): GitHub; [Accessed Year Mon Day]. https://github.com/floristijhuis/HCP-rfMRI-repository.*
+*Tijhuis, F., Schepers, M., Centeno, E., Douw, L., Nobrega Santos, F. Human Connectome project rfMRI repository. San Francisco (CA): GitHub; [Accessed Year Mon Day]. https://github.com/floristijhuis/HCP-rfMRI-repository.*
